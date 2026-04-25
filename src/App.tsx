@@ -55,27 +55,17 @@ export default function App() {
 
   const instagramLink = "https://www.instagram.com/amarea_ilheus?igsh=MWg5aGNwZDh4OG00Ng%3D%3D";
 
-  useEffect(() => {
-    // Elfsight script injection
-    if (!document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')) {
-      const script = document.createElement('script');
-      script.src = "https://elfsightcdn.com/platform.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
-
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Navbar */}
-      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-4' : 'bg-white py-6'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-4 md:py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
           {/* Logo Area */}
           <div className="flex items-center">
             <img 
-              src="/assets/LOGO_AMAREA.png" 
+              src="/assets/logo_amarea.png" 
               alt="AMAREA Logo" 
-              className={`${isScrolled ? 'h-16' : 'h-20'} md:h-24 w-auto object-contain transition-all`}
+              className={`${isScrolled ? 'h-12' : 'h-14'} md:h-20 w-auto object-contain transition-all`}
             />
           </div>
 
@@ -148,37 +138,28 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section id="inicio" className="pt-32 flex flex-col md:flex-row min-h-[600px]">
-          <div className="w-full md:w-1/2 bg-[#a39e76] flex items-center justify-center p-8 md:p-4 lg:p-16 text-white min-h-[400px]">
+        <section id="inicio" className="relative flex flex-col md:flex-row min-h-0 md:h-screen pt-24 md:pt-32 bg-white">
+          {/* Text Content */}
+          <div className="w-full md:w-1/2 bg-[#a39e76] flex items-start md:items-start justify-center p-6 md:p-12 lg:p-20 text-white">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-md"
+              className="max-w-xl w-full pt-8 md:pt-20"
             >
-              <h1 className="text-3xl md:text-xl lg:text-5xl font-light leading-tight mb-4">
+              <h1 className="text-3xl md:text-2xl lg:text-4xl font-light leading-tight mb-8">
                 Promovendo o desenvolvimento comunitário para os <span className="font-bold">Moradores e Agricultores do Rio de Engenho e Adjacências</span>
               </h1>
-              <div className="w-16 h-px bg-white/50 mb-4 md:mb-2 lg:mb-8"></div>
-              <p className="text-sm md:text-[10px] lg:text-base leading-relaxed opacity-90 mb-6 md:mb-4 lg:mb-10">
+              <div className="w-20 h-px bg-white/50 mb-10"></div>
+              <p className="text-sm md:text-xs lg:text-lg leading-relaxed opacity-90 mb-12 max-w-lg text-left">
                 Somos um movimento que proporciona aos seus associados condições adequadas para a plena realização das funções de habitar, trabalhar, recrear e de se desenvolver.
               </p>
-              <div className="flex flex-col items-center group cursor-pointer" onClick={() => document.getElementById('associacao')?.scrollIntoView({ behavior: 'smooth' })}>
-                <p className="font-script text-2xl md:text-3xl mb-4 group-hover:text-white/80 transition-colors">Conheça nosso projeto</p>
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-10 h-10 border-2 border-white rounded-full flex items-center justify-center"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-                  </svg>
-                </motion.div>
-              </div>
             </motion.div>
           </div>
-          <div className="w-full md:w-1/2 bg-[#a39e76] relative h-[500px] md:min-h-[600px] overflow-hidden">
-            <AnimatePresence initial={false}>
+
+          {/* Carousel Content */}
+          <div className="w-full md:w-1/2 relative h-[450px] md:h-full overflow-hidden bg-gray-100">
+            <AnimatePresence initial={false} mode="wait">
               <motion.img 
                 key={currentHeroImage}
                 src={heroImages[currentHeroImage]} 
@@ -186,22 +167,40 @@ export default function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </AnimatePresence>
             
-            {/* Pagination Dots */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+            {/* Pagination Controls */}
+            <div className="absolute bottom-8 right-8 flex items-center gap-2 z-10 p-2 md:p-3 bg-black/10 backdrop-blur-md rounded-full">
               {heroImages.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentHeroImage(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${i === currentHeroImage ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'}`}
+                  className={`transition-all duration-500 rounded-full ${i === currentHeroImage ? 'bg-white w-10 md:w-12 h-1.5' : 'bg-white/40 hover:bg-white/70 w-1.5 h-1.5'}`}
+                  aria-label={`Ir para slide ${i + 1}`}
                 />
               ))}
             </div>
+            
+            {/* Overlay Gradient */}
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
           </div>
+
+          {/* Centered Scroll Indicator */}
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 cursor-pointer flex flex-col items-center"
+            onClick={() => document.getElementById('associacao')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <div className="w-10 h-10 border-2 border-white md:border-white/50 rounded-full flex items-center justify-center text-white backdrop-blur-sm bg-white/20">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+              </svg>
+            </div>
+          </motion.div>
         </section>
 
         {/* A Associação */}
@@ -301,7 +300,7 @@ export default function App() {
         <section id="rio" className="flex flex-col md:flex-row min-h-[600px]">
           <div className="w-full md:w-1/2 bg-gray-200 min-h-[400px]">
             <img 
-              src="/rio_do_engenho.jpg" 
+              src="/assets/rio_do_engenho.jpg" 
               alt="O Rio do Engenho" 
               className="w-full h-full object-cover"
             />
@@ -340,46 +339,21 @@ export default function App() {
                 Cenário de belezas naturais, a localidade favorece a realização de passeios e trilhas pelo roçado e pelas margens do Rio Santana, cavalgadas, passeios de barco, visita às propriedades locais para acompanhar atividades produtivas, conhecer os processos artesanais de agroindustrialização (doces, geleias, polpa de frutas, cacau e chocolate, bebidas), entre outras possibilidades. (ARAÚJO et al., 2017, p.33)
               </p>
               <a 
-                href="/assets/ebook-turismo-rural.pdf" 
+                href="https://janerik.com.br/wp-content/uploads/2026/04/Araujoetal.TurismonoEspaoRural-ISBN978-85-7991-107-1.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-[#b3ab8d] text-white px-8 py-3 rounded-md hover:bg-opacity-90 transition-all shadow-lg text-sm font-medium inline-block"
               >
-                Baixe o ebook sobre
+                Veja mais no arquivo completo
               </a>
             </motion.div>
           </div>
           <div className="w-full md:w-1/2 bg-gray-200">
             <img 
-              src="/trilha.jpeg" 
+              src="/assets/trilha.jpeg" 
               alt="Trilha do Rio" 
               className="w-full h-full object-cover"
             />
-          </div>
-        </section>
-
-        {/* Instagram Feed Section */}
-        <section className="py-24 bg-[#f9f8f3]">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
-            <h2 className="font-script text-6xl text-[#a39e76] mb-12">Nosso Instagram</h2>
-            <p className="mb-12 text-[#4a4a4a]">Acompanhe nossas atualizações diárias no <a href={instagramLink} target="_blank" rel="noopener noreferrer" className="text-[#5d7c6f] font-bold hover:underline">@amarea_ilheus</a></p>
-            
-            {/* Elfsight Instagram Feed */}
-            <div className="min-h-[400px]">
-              <div className="elfsight-app-93de8b09-90bd-4d15-8063-e9715acf0439" data-elfsight-app-lazy="true"></div>
-            </div>
-            
-            <div className="mt-12">
-              <a 
-                href={instagramLink} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#5d7c6f] text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all font-medium"
-              >
-                <Instagram className="w-5 h-5" />
-                Seguir no Instagram
-              </a>
-            </div>
           </div>
         </section>
 
