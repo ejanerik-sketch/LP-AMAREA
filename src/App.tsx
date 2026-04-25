@@ -12,21 +12,27 @@ export default function App() {
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
 
   const heroImages = [
-    '/assets/01.jpg',
-    '/assets/02.jpg',
-    '/assets/03.jpeg',
-    '/assets/04.jpeg',
-    '/assets/05.jpeg',
-    '/assets/06.jpeg',
-    '/assets/07.jpeg',
-    '/assets/08.jpg',
-    '/assets/09.jpg',
-    '/assets/11.jpg',
-    '/assets/12.jpg',
-    '/assets/13.jpg',
-    '/assets/14.jpg',
-    '/assets/15.jpg',
-    '/assets/16.jpeg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/01.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/02.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/03.jpeg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/04.jpeg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/05.jpeg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/07.jpeg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/08.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/09.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/11.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/12.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/13.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/14.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/15.jpg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/16.jpeg',
+  ];
+
+  const productImages = [
+    'https://janerik.com.br/wp-content/uploads/2026/04/prod01.jpeg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/prod02.jpeg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/prod03.jpeg',
+    'https://janerik.com.br/wp-content/uploads/2026/04/prod04-1.jpeg',
   ];
 
   useEffect(() => {
@@ -63,7 +69,7 @@ export default function App() {
           {/* Logo Area */}
           <div className="flex items-center">
             <img 
-              src="/assets/logo_amarea.png" 
+              src="https://janerik.com.br/wp-content/uploads/2026/04/LOGO_AMAREA.png" 
               alt="AMAREA Logo" 
               className={`${isScrolled ? 'h-12' : 'h-14'} md:h-20 w-auto object-contain transition-all`}
             />
@@ -212,7 +218,7 @@ export default function App() {
             className="rounded-xl overflow-hidden shadow-2xl"
           >
             <img 
-              src="/assets/associacao.jpeg" 
+              src="https://janerik.com.br/wp-content/uploads/2026/04/assossiacao.jpeg" 
               alt="A Associação" 
               className="w-full h-auto"
             />
@@ -280,15 +286,15 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-            {[1, 2, 3, 4].map((i) => (
+            {productImages.map((src, i) => (
               <motion.div 
                 key={i}
                 whileHover={{ scale: 1.05 }}
                 className="aspect-square bg-gray-100 rounded-lg overflow-hidden shadow-md"
               >
                 <img 
-                  src={`/assets/prod0${i}.jpeg`} 
-                  alt={`Produto ${i}`} 
+                  src={src} 
+                  alt={`Produto ${i + 1}`} 
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -300,7 +306,7 @@ export default function App() {
         <section id="rio" className="flex flex-col md:flex-row min-h-[600px]">
           <div className="w-full md:w-1/2 bg-gray-200 min-h-[400px]">
             <img 
-              src="/assets/rio_do_engenho.jpg" 
+              src="https://janerik.com.br/wp-content/uploads/2026/04/RIO-do-engenho.jpg" 
               alt="O Rio do Engenho" 
               className="w-full h-full object-cover"
             />
@@ -350,7 +356,7 @@ export default function App() {
           </div>
           <div className="w-full md:w-1/2 bg-gray-200">
             <img 
-              src="/assets/trilha.jpeg" 
+              src="https://janerik.com.br/wp-content/uploads/2026/04/trilha.jpeg" 
               alt="Trilha do Rio" 
               className="w-full h-full object-cover"
             />
