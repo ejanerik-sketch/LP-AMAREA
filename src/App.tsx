@@ -12,21 +12,21 @@ export default function App() {
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
 
   const heroImages = [
-    '/Assets/01.jpg',
-    '/Assets/02.jpg',
-    '/Assets/03.jpeg',
-    '/Assets/04.jpeg',
-    '/Assets/05.jpeg',
-    '/Assets/06.jpeg',
-    '/Assets/07.jpeg',
-    '/Assets/08.jpg',
-    '/Assets/09.jpg',
-    '/Assets/11.jpg',
-    '/Assets/12.jpg',
-    '/Assets/13.jpg',
-    '/Assets/14.jpg',
-    '/Assets/15.jpg',
-    '/Assets/16.jpeg',
+    '/assets/01.jpg',
+    '/assets/02.jpg',
+    '/assets/03.jpeg',
+    '/assets/04.jpeg',
+    '/assets/05.jpeg',
+    '/assets/06.jpeg',
+    '/assets/07.jpeg',
+    '/assets/08.jpg',
+    '/assets/09.jpg',
+    '/assets/11.jpg',
+    '/assets/12.jpg',
+    '/assets/13.jpg',
+    '/assets/14.jpg',
+    '/assets/15.jpg',
+    '/assets/16.jpeg',
   ];
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function App() {
           {/* Logo Area */}
           <div className="flex items-center">
             <img 
-              src="/Assets/LOGO_AMAREA.png" 
+              src="/assets/LOGO_AMAREA.png" 
               alt="AMAREA Logo" 
               className={`${isScrolled ? 'h-16' : 'h-20'} md:h-24 w-auto object-contain transition-all`}
             />
@@ -213,7 +213,7 @@ export default function App() {
             className="rounded-xl overflow-hidden shadow-2xl"
           >
             <img 
-              src="/Assets/assossiacao.jpeg" 
+              src="/assets/associacao.jpeg" 
               alt="A Associação" 
               className="w-full h-auto"
             />
@@ -288,7 +288,7 @@ export default function App() {
                 className="aspect-square bg-gray-100 rounded-lg overflow-hidden shadow-md"
               >
                 <img 
-                  src={`/Assets/prod0${i}.jpeg`} 
+                  src={`/assets/prod0${i}.jpeg`} 
                   alt={`Produto ${i}`} 
                   className="w-full h-full object-cover"
                 />
@@ -301,7 +301,7 @@ export default function App() {
         <section id="rio" className="flex flex-col md:flex-row min-h-[600px]">
           <div className="w-full md:w-1/2 bg-gray-200 min-h-[400px]">
             <img 
-              src="/RIO do engenho.JPG" 
+              src="/rio_do_engenho.jpg" 
               alt="O Rio do Engenho" 
               className="w-full h-full object-cover"
             />
@@ -340,7 +340,7 @@ export default function App() {
                 Cenário de belezas naturais, a localidade favorece a realização de passeios e trilhas pelo roçado e pelas margens do Rio Santana, cavalgadas, passeios de barco, visita às propriedades locais para acompanhar atividades produtivas, conhecer os processos artesanais de agroindustrialização (doces, geleias, polpa de frutas, cacau e chocolate, bebidas), entre outras possibilidades. (ARAÚJO et al., 2017, p.33)
               </p>
               <a 
-                href="/Assets/Araujoetal.TurismonoEspaoRural-ISBN978-85-7991-107-1.pdf" 
+                href="/assets/ebook-turismo-rural.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-[#b3ab8d] text-white px-8 py-3 rounded-md hover:bg-opacity-90 transition-all shadow-lg text-sm font-medium inline-block"
