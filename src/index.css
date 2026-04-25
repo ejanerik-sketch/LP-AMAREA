@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Alex Brush", cursive;
+
+  --color-amarea-olive: #a39e76;
+  --color-amarea-dark: #5d7c6f;
+  --color-amarea-beige: #f9f8f3;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-[#4a4a4a] antialiased;
+  }
+}
+
